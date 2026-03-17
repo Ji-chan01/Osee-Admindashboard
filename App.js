@@ -148,6 +148,7 @@ const ADMIN_USERS = ['All Admins', 'admin', 'jdoe', 'mcruz'];
 
 const MENU_ITEMS = [
   { id: 'dashboard',  label: 'Dashboard',    icon: 'grid'   },
+  { id: 'User Management',  label: 'User Management',    icon: 'grid'   },
   { id: 'map',        label: 'Map Overview', icon: 'map'    },
   { id: 'nodes',      label: 'Manage Nodes', icon: 'node'   },
   { id: 'edges',      label: 'Manage Edges', icon: 'edge'   },
@@ -265,19 +266,6 @@ const IconChevronDown = ({ size = 14, color = C.maroon }) => (
     <Path d="M6 9l6 6 6-6" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </Svg>
 );
-
-const menuIcon = (id, size, color) => {
-  switch (id) {
-    case 'dashboard': return <IconGrid    size={size} color={color} />;
-    case 'map':       return <IconMap     size={size} color={color} />;
-    case 'nodes':     return <IconNode    size={size} color={color} />;
-    case 'edges':     return <IconEdge    size={size} color={color} />;
-    case 'events':    return <IconEvent   size={size} color={color} />;
-    case 'backtoapp': return <IconBackApp size={size} color={color} />;
-    case 'logout':    return <IconLogout  size={size} color={color} />;
-    default:          return null;
-  }
-};
 
 // ─── Rank helpers (module-level pure functions) ───────────────────────────────
 const rankColor = (rank) => {
@@ -926,9 +914,6 @@ export default function App() {
                     <Text style={styles.menuAppSub}>Admin Panel</Text>
                   </View>
                 </View>
-                <TouchableOpacity style={styles.menuCloseBtn} onPress={closeMenu} activeOpacity={0.75}>
-                  <IconClose size={18} color="rgba(250,247,242,0.6)" />
-                </TouchableOpacity>
               </View>
 
               <View style={styles.menuDivider} />
@@ -963,9 +948,6 @@ export default function App() {
                         onPress={() => handleMenuPress(item.id)}
                         activeOpacity={0.75}
                       >
-                        <View style={[styles.menuItemIcon, isActive && styles.menuItemIconActive]}>
-                          {menuIcon(item.id, 17, iconColor)}
-                        </View>
                         <Text style={[styles.menuItemLabel, { color: textColor }]}>{item.label}</Text>
                         {isActive && <View style={styles.menuItemActiveDot} />}
                       </TouchableOpacity>
@@ -1382,7 +1364,7 @@ const styles = StyleSheet.create({
   },
   menuAppName: {
     fontFamily:    'Montserrat_700Bold',
-    fontSize:      14,
+    fontSize:      15,
     color:         C.white,
     letterSpacing: 4,
   },
@@ -1412,7 +1394,7 @@ const styles = StyleSheet.create({
     flexDirection:     'row',
     alignItems:        'center',
     gap:               12,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     paddingVertical:   12,
     backgroundColor:   'rgba(255,255,255,0.05)',
     marginHorizontal:  16,
@@ -1454,7 +1436,7 @@ const styles = StyleSheet.create({
   menuSectionLabelText: {
     fontFamily:    'Montserrat_700Bold',
     fontSize:      8,
-    color:         'rgba(250,247,242,0.25)',
+    color:         'rgba(250,247,242,0.5)',
     letterSpacing: 2.5,
   },
   menuItems: {
@@ -1465,30 +1447,17 @@ const styles = StyleSheet.create({
     flexDirection:     'row',
     alignItems:        'center',
     gap:               12,
-    paddingVertical:   11,
+    paddingVertical:   13,
     paddingHorizontal: 12,
-    borderRadius:      12,
     marginBottom:      2,
   },
   menuItemActive: {
-    backgroundColor: 'rgba(201,169,110,0.1)',
-    borderWidth:     1,
-    borderColor:     'rgba(201,169,110,0.2)',
-  },
-  menuItemIcon: {
-    width:           34,
-    height:          34,
-    borderRadius:    17,
-    backgroundColor: 'rgba(255,255,255,0.06)',
-    alignItems:      'center',
-    justifyContent:  'center',
-  },
-  menuItemIconActive: {
-    backgroundColor: 'rgba(201,169,110,0.15)',
+    borderBottomWidth:     1,
+    borderColor:     'rgba(201,169,110,0.5)',
   },
   menuItemLabel: {
     fontFamily:    'Montserrat_600SemiBold',
-    fontSize:      13,
+    fontSize:      15,
     letterSpacing: 0.3,
     flex:          1,
   },
