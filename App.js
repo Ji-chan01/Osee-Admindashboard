@@ -1452,9 +1452,9 @@ const styles = StyleSheet.create({
     marginBottom:      2,
   },
   menuItemActive: {
-    borderBottomWidth:     1,
-    borderColor:     'rgba(201,169,110,0.5)',
-  },
+    borderBottomWidth: 1,
+    borderColor: 'rgba(201,169,110,0.5)'
+},
   menuItemLabel: {
     fontFamily:    'Montserrat_600SemiBold',
     fontSize:      15,
